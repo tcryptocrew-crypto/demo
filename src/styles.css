@@ -1,0 +1,161 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * HANCEL VILLATORO — premium personal brand design system.
+ * Clean luxury light theme: white / charcoal / soft grey with a cobalt accent.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-soft: var(--soft);
+  --color-silver: var(--silver);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-soft: var(--cobalt-soft);
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand palette */
+  --background: oklch(1 0 0); /* #FFFFFF */
+  --foreground: oklch(0.168 0.017 265); /* #0A0D14 */
+  --ink: oklch(0.168 0.017 265);
+  --ink-soft: oklch(0.229 0.017 265); /* #171B24 */
+  --soft: oklch(0.972 0.004 250); /* #F5F7FA */
+  --silver: oklch(0.848 0.011 253); /* #C9CED8 */
+  --cobalt: oklch(0.532 0.226 265); /* #3157FF */
+  --cobalt-soft: oklch(0.63 0.166 271); /* #6E7CFF */
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--cobalt);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--soft);
+  --secondary-foreground: var(--ink);
+  --muted: var(--soft);
+  --muted-foreground: oklch(0.551 0.017 264); /* #6B7280 */
+  --accent: var(--soft);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.935 0.005 255); /* #E7EAF0 */
+  --input: oklch(0.935 0.005 255);
+  --ring: var(--cobalt);
+
+  --shadow-soft: 0 1px 2px rgb(10 13 20 / 0.04), 0 12px 32px -12px rgb(10 13 20 / 0.1);
+  --shadow-lift: 0 18px 48px -18px rgb(10 13 20 / 0.22);
+  --shadow-cobalt: 0 14px 40px -14px color-mix(in oklab, var(--cobalt) 45%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--cobalt) 18%, transparent);
+    color: var(--ink);
+  }
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+}
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+@utility surface-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+@utility lift {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+}
+
+@utility grain {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--silver) 60%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
